@@ -21,10 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/paneles', [PanelController::class, 'index']);
-Route::get('/paneles/{panel}', [PanelController::class, 'show']);
+Route::get('/paneles', [PanelController::class, 'index'])->middleware('CORS');
+Route::get('/paneles/{panel}', [PanelController::class, 'show'])->middleware('CORS');
 
-Route::get('/series', [SerieController::class, 'index']);
-Route::get('/series/{serie}', [SerieController::class, 'show']);
+Route::get('/series', [SerieController::class, 'index'])->middleware('CORS');
+Route::get('/series/{serie}', [SerieController::class, 'show'])->middleware('CORS');
 
-Route::get('/datos', [DatoController::class, 'index']);
+Route::get('/datos', [DatoController::class, 'index'])->middleware('CORS');
