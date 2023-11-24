@@ -12,6 +12,6 @@ class SerieController extends Controller
     }
 
     public function show($id){
-        return Serie::find($id)->with('datos')->first();
+        return Serie::with('datos')->find($id);
     }
 }

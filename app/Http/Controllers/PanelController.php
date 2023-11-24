@@ -12,6 +12,6 @@ class PanelController extends Controller
     }
 
     public function show($id) {
-        return Panel::find($id)->with('series')->first();
+        return Panel::with('series')->find($id);
     }
 }
