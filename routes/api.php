@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/paneles', [PanelController::class, 'index']);
 Route::get('/paneles/{panel}', [PanelController::class, 'show']);
+Route::put('/paneles/{panel}/series/{serie}', [PanelController::class, 'addSerie']);
+Route::delete('/paneles/{panel}/series/{serie}', [PanelController::class, 'removeSerie']);
 
 Route::get('/series', [SerieController::class, 'index']);
 Route::get('/series/{serie}', [SerieController::class, 'show']);

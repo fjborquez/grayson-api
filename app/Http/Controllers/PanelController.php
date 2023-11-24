@@ -14,4 +14,16 @@ class PanelController extends Controller
     public function show($id) {
         return Panel::with('series')->find($id);
     }
+
+    public function addSerie($panelId, $serieId) {
+        $panel = Panel::find($panelId);
+        $panel->series()->attach($serieId);
+        return $panel;
+    }
+
+    public function removeSerie($panelId, $serieId) {
+        $panel = Panel::find($panelId);
+        $panel->series()->detach($serieId);
+        return $panel;
+    }
 }
