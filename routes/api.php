@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DatoController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\SerieController;
@@ -21,12 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/paneles', [PanelController::class, 'index']);
-Route::get('/paneles/{panel}', [PanelController::class, 'show']);
-Route::put('/paneles/{panel}/series/{serie}', [PanelController::class, 'addSerie']);
-Route::delete('/paneles/{panel}/series/{serie}', [PanelController::class, 'removeSerie']);
+Route::middleware(['api'])->group(function() {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/me', [AuthController::class, 'me']);
+});
 
-Route::get('/series', [SerieController::class, 'index']);
-Route::get('/series/{serie}', [SerieController::class, 'show']);
+Route::middleware('auth:api')->get('/paneles', [PanelController::class, 'index']);
+Route::middleware('auth:api')->get('/paneles/{panel}', [PanelController::class, 'show']);
+Route::middleware('auth:api')->put('/paneles/{panel}/series/{serie}', [PanelController::class, 'addSerie']);
+Route::middleware('auth:api')->delete('/paneles/{panel}/series/{serie}', [PanelController::class, 'removeSerie']);
 
-Route::get('/datos', [DatoController::class, 'index']);
+Route::middleware('auth:api')->get('/series', [SerieController::class, 'index']);
+Route::middleware('auth:api')->get('/series/{serie}', [SerieController::class, 'show']);
+
+Route::middleware('auth:api')->get('/datos', [DatoController::class, 'index']);
