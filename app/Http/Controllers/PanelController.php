@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\Panel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\JWTAuth;
 
 class PanelController extends Controller
 {
-    public function index() {
-        return Panel::all();
+    public function index(Request $request) {
+        $paneles = new Panel;
+
+        if ($request->has('user_id')) {
+            $paneles = $paneles->where('user_id', $request->get('user_id'));
+        }
+
+        return $paneles->get();
     }
 
     public function show($id) {
