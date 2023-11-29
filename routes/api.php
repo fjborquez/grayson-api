@@ -31,6 +31,7 @@ Route::middleware(['api'])->group(function() {
 Route::middleware('auth:api')->get('/paneles', [PanelController::class, 'index']);
 Route::middleware('auth:api')->post('/paneles', [PanelController::class, 'store']);
 Route::middleware('auth:api')->get('/paneles/{panel}', [PanelController::class, 'show']);
+Route::middleware('auth:api')->delete('/paneles/{panel}', [PanelController::class, 'delete']);
 Route::middleware('auth:api')->put('/paneles/{panel}/series/{serie}', [PanelController::class, 'addSerie']);
 Route::middleware('auth:api')->delete('/paneles/{panel}/series/{serie}', [PanelController::class, 'removeSerie']);
 

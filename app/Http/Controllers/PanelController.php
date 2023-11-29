@@ -22,6 +22,10 @@ class PanelController extends Controller
         return Panel::with('series')->find($id);
     }
 
+    public function delete($id) {
+        return Panel::find($id)->delete();
+    }
+
     public function store(Request $request) {
         $user = Auth::user();
         $panel = new Panel;
