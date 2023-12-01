@@ -10,7 +10,7 @@ class Dato extends Model
 {
     use HasFactory;
     protected $table = 'datos';
-    protected $fillable = ['clave', 'valor', 'fuente'];
+    protected $fillable = ['clave', 'valor', 'fuente', 'serie_id'];
 
     public function series(): BelongsTo
     {

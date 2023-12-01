@@ -21,4 +21,8 @@ class Serie extends Model
     {
         return $this->hasMany(Dato::class);
     }
+
+    public function datasource() {
+        return $this->hasOne(Datasource::class);
+    }
 }
