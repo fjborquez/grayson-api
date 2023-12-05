@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Imports\CommoditiesPrecioDelZincImport;
-use Illuminate\Console\Command;
 
 class CommoditiesPrecioDelZinc extends FondoMonetarioInternacionalCommodity
 {
