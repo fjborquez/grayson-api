@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Serie extends Model
 {
@@ -24,5 +25,11 @@ class Serie extends Model
 
     public function datasource() {
         return $this->hasOne(Datasource::class);
+    }
+
+    public function configuraciones(): HasMany
+    {
+        return $this->hasMany(Configuracion::class);
+
     }
 }
