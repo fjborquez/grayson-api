@@ -19,6 +19,11 @@ class Panel extends Model
         return $this->belongsToMany(Serie::class);
     }
 
+    public function insiders(): belongsToMany
+    {
+        return $this->belongsToMany(SubpanelInsider::class);
+    }
+
     public function usuario(): BelongsTo
     {
         return $this->belongsTo(User::class);

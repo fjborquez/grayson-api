@@ -19,7 +19,7 @@ class PanelController extends Controller
     }
 
     public function show($id) {
-        return Panel::with('series')->find($id);
+        return Panel::with('series')->with('insiders')->find($id);
     }
 
     public function delete($id) {
@@ -43,9 +43,21 @@ class PanelController extends Controller
         return $panel;
     }
 
+    public function addInsider($panelId, $insiderId) {
+        $panel = Panel::find($panelId);
+        $panel->insiders()->attach($insiderId);
+        return $panel;
+    }
+
     public function removeSerie($panelId, $serieId) {
         $panel = Panel::find($panelId);
         $panel->series()->detach($serieId);
+        return $panel;
+    }
+
+    public function removeInsider($panelId, $insiderId) {
+        $panel = Panel::find($panelId);
+        $panel->insiders()->detach($insiderId);
         return $panel;
     }
 }

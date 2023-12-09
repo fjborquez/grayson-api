@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOpcionsTable extends Migration
+class PanelToSubpanel extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateOpcionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('opciones', function (Blueprint $table) {
+        Schema::create('panel_subpanel_insider', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('descripcion')->nullable();
-            $table->string('valor_por_defecto')->nullable();
-            $table->foreignId('configuracion_id')->constrained('configuraciones');
             $table->timestamps();
+            $table->foreignId('panel_id')->constrained('paneles');
+            $table->foreignId('subpanel_insider_id')->constrained('subpaneles_insider');
         });
     }
 
@@ -30,6 +28,6 @@ class CreateOpcionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('opciones');
+        Schema::dropIfExists('panel_subpanel_insider');
     }
 }

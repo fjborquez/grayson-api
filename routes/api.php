@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DatoController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\SerieController;
+use App\Http\Controllers\SubpanelInsiderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,8 +35,13 @@ Route::middleware('auth:api')->get('/paneles/{panel}', [PanelController::class, 
 Route::middleware('auth:api')->delete('/paneles/{panel}', [PanelController::class, 'delete']);
 Route::middleware('auth:api')->put('/paneles/{panel}/series/{serie}', [PanelController::class, 'addSerie']);
 Route::middleware('auth:api')->delete('/paneles/{panel}/series/{serie}', [PanelController::class, 'removeSerie']);
+Route::middleware('auth:api')->put('/paneles/{panel}/insiders/{insider}', [PanelController::class, 'addInsider']);
+Route::middleware('auth:api')->delete('/paneles/{panel}/insiders/{insider}', [PanelController::class, 'removeInsider']);
+
 
 Route::middleware('auth:api')->get('/series', [SerieController::class, 'index']);
 Route::middleware('auth:api')->get('/series/{serie}', [SerieController::class, 'show']);
 
 Route::middleware('auth:api')->get('/datos', [DatoController::class, 'index']);
+
+Route::middleware('auth:api')->get('/insiders', [SubpanelInsiderController::class, 'index']);
