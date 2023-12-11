@@ -19,7 +19,7 @@ class PanelController extends Controller
     }
 
     public function show($id) {
-        return Panel::with('series')->with('insiders')->find($id);
+        return Panel::with('series')->with('insiders')->with('resultadosAnuales')->find($id);
     }
 
     public function delete($id) {
@@ -49,6 +49,12 @@ class PanelController extends Controller
         return $panel;
     }
 
+    public function addResultadoAnual($panelId, $resultadoAnualId) {
+        $panel = Panel::find($panelId);
+        $panel->resultadosAnuales()->attach($resultadoAnualId);
+        return $panel;
+    }
+
     public function removeSerie($panelId, $serieId) {
         $panel = Panel::find($panelId);
         $panel->series()->detach($serieId);
@@ -58,6 +64,12 @@ class PanelController extends Controller
     public function removeInsider($panelId, $insiderId) {
         $panel = Panel::find($panelId);
         $panel->insiders()->detach($insiderId);
+        return $panel;
+    }
+
+    public function removeResultadoAnual($panelId, $resultadoAnualId) {
+        $panel = Panel::find($panelId);
+        $panel->resultadosAnuales()->detach($resultadoAnualId);
         return $panel;
     }
 }

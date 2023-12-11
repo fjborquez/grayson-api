@@ -24,6 +24,11 @@ class Panel extends Model
         return $this->belongsToMany(SubpanelInsider::class);
     }
 
+    public function resultadosAnuales(): belongsToMany
+    {
+        return $this->belongsToMany(SubpanelResultadoAnual::class, 'panel_subpanel_resultado_anual', 'panel_id', 'subpanel_res_anual_id');
+    }
+
     public function usuario(): BelongsTo
     {
         return $this->belongsTo(User::class);
