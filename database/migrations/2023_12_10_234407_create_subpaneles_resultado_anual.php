@@ -31,4 +31,4 @@ return new class extends Migration {
     {
         Schema::dropIfExists('subpaneles_resultado_anual');
     }
-}
+};
