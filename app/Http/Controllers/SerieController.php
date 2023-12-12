@@ -12,6 +12,6 @@ class SerieController extends Controller
     }
 
     public function show($id){
-        return Serie::with('datos')->with('configuraciones')->with('configuraciones.opciones')->find($id);
+        return Serie::with('datos')->find($id);
     }
 }
