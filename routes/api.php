@@ -24,4 +24,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/series-estadisticas', [SerieController::class, 'index']);
 Route::get('/series-estadisticas/{serie}', [SerieController::class, 'show']);
 
-Route::middleware('auth:api')->get('/datos', [DatoController::class, 'index']);
+Route::get('/datos', [DatoController::class, 'index']);
