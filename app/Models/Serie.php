@@ -11,7 +11,7 @@ class Serie extends Model
 {
     use HasFactory;
     protected $table = 'series';
-    protected $fillable = ['nombre', 'eje_x', 'eje_y', 'descripcion', 'ente'];
+    protected $fillable = ['nombre', 'eje_x', 'eje_y', 'descripcion', 'ente', 'source'];
 
     public function paneles(): BelongsToMany
     {
