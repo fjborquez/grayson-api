@@ -13,7 +13,7 @@ class CreateSourceColumn extends Migration
      */
     public function up()
     {
-        Schema::table('Series', function(Blueprint $table) {
+        Schema::table('series', function(Blueprint $table) {
             $table->string('source')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class CreateSourceColumn extends Migration
      */
     public function down()
     {
-        Schema::table('Series', function(Blueprint $table) {
+        Schema::table('series', function(Blueprint $table) {
             $table->dropColumn('source');
         });
     }
