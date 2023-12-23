@@ -18,7 +18,6 @@ class CreateDatosTable extends Migration
             $table->timestamps();
             $table->string('clave');
             $table->string('valor');
-            $table->string('fuente')->nullable();
         });
     }
 
