@@ -4,6 +4,7 @@ use App\Http\Controllers\DatoController;
 use App\Http\Controllers\SerieController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\ValidateToken;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/series-estadisticas', [SerieController::class, 'index']);
-Route::get('/series-estadisticas/{serie}', [SerieController::class, 'show']);
-
-Route::get('/datos', [DatoController::class, 'index']);
+Route::middleware(ValidateToken::class)->get('/series-estadisticas', [SerieController::class, 'index']);
+Route::middleware(ValidateToken::class)->get('/series-estadisticas/{serie}', [SerieController::class, 'show']);
+Route::middleware(ValidateToken::class)->get('/datos', [DatoController::class, 'index']);
