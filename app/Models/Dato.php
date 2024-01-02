@@ -15,7 +15,7 @@ class Dato extends Model
 
     protected function valor(): Attribute
     {
-        return Attribute::make(
+        return new Attribute(
             get: fn (string $value) => intval($value)
         );
     }
